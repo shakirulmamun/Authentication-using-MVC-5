@@ -1,0 +1,66 @@
+﻿@model Authentication.Models.tbl_User
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/CustomeStyleSheet/LoginStyleSheet.css" rel="stylesheet" />
+
+
+
+<body>
+    <div id="LoginFormLayout">
+        <div class="row">
+
+            <div class="col-md-6">
+                <div id="loginImage">
+                    <img src="~/images/3.jpg" alt="login image" class="img-responsive" />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+                <div id="loginForm">
+                    @using (Html.BeginForm("Login", "Authentication", FormMethod.Post))
+                    {
+                        <h3>Login Form</h3><br />
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-12">
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"> <i class="glyphicon glyphicon-user"></i> </span>
+                                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your name" } })
+                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div><br /><br />
+
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your password" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div><br /><br />
+
+                            <div class="form-group">
+                                <div class="col-md-offset-6 col-md-2">
+                                    <input type="submit" value="Login" class="btn btn-primary" />
+                                </div>
+                            </div>
+
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
